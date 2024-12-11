@@ -11,16 +11,59 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { chatSession } from "@/utils/GeminiAiModal"
+import { LoaderCircle } from "lucide-react"
+import { db } from "@/utils/db"
+import { InterviewPro } from "@/utils/schema"
+import { v4 as uuidv4 } from "uuid"
+import { useUser } from "@clerk/nextjs"
+import moment from "moment"
 
 const AddNewInterview = () => {
 	const [openDialog, setOpenDialog] = useState(false)
 	const [jobPosition, setJobPosition] = useState()
 	const [jobDesc, setJobDesc] = useState()
 	const [jobExp, setJobExp] = useState()
-
-	const onSubmit = (e) => {
+	const [loading, setLoading] = useState(false)
+	const [jsonResponse, setJsonResponse] = useState([])
+	const { user } = useUser()
+	const onSubmit = async (e) => {
 		e.preventDefault()
+		setLoading(true)
+
 		console.log(jobPosition, jobDesc, jobExp)
+
+		const InputPrompt = `I need you to to come up with 5 interview questions based on ${jobPosition}. Here is the job description ${jobDesc}. The years of experince is ${jobExp}. Please give the response in JSON format. With question, then answer as text JSON`
+		const result = await chatSession.sendMessage(InputPrompt)
+		const MockJsonResp = result.response
+			.text()
+			.replace("```json", "")
+			.replace("```", "")
+		console.log(JSON.parse(MockJsonResp))
+		setJsonResponse(MockJsonResp)
+
+		if (MockJsonResp) {
+			const response = await db
+				.insert(InterviewPro)
+				.values({
+					mockId: uuidv4(),
+					jsonMockResp: MockJsonResp,
+					jobPosition: jobPosition,
+					jobDesc: jobDesc,
+					jobExperience: jobExp,
+					createdBy: user?.primaryEmailAddress?.emailAddress,
+					createdAT: moment().format("DD-MM-yyyy"),
+				})
+				.returning({ mockId: InterviewPro.mockId })
+			console.log("Inserting Id:", response)
+			if (response) {
+				setOpenDialog(false)
+			}
+		} else {
+			console.log("ERROR")
+		}
+
+		setLoading(false)
 	}
 
 	return (
@@ -81,7 +124,16 @@ const AddNewInterview = () => {
 									>
 										Cancel
 									</Button>
-									<Button type="submit">Start Interview</Button>
+									<Button type="submit" disabled={loading}>
+										{loading ? (
+											<>
+												<LoaderCircle className="animate-spin" />
+												Generating
+											</>
+										) : (
+											"Start Interview"
+										)}
+									</Button>
 								</div>
 							</form>
 						</DialogDescription>
