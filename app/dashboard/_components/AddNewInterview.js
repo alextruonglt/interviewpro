@@ -18,6 +18,7 @@ import { InterviewPro } from "@/utils/schema"
 import { v4 as uuidv4 } from "uuid"
 import { useUser } from "@clerk/nextjs"
 import moment from "moment"
+import { useRouter } from "next/router"
 
 const AddNewInterview = () => {
 	const [openDialog, setOpenDialog] = useState(false)
@@ -26,6 +27,7 @@ const AddNewInterview = () => {
 	const [jobExp, setJobExp] = useState()
 	const [loading, setLoading] = useState(false)
 	const [jsonResponse, setJsonResponse] = useState([])
+	const router = useRouter()
 	const { user } = useUser()
 	const onSubmit = async (e) => {
 		e.preventDefault()
@@ -58,6 +60,7 @@ const AddNewInterview = () => {
 			console.log("Inserting Id:", response)
 			if (response) {
 				setOpenDialog(false)
+				router.push(`/dashboard/interview${response[0]}`)
 			}
 		} else {
 			console.log("ERROR")
