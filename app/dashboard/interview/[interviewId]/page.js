@@ -1,6 +1,7 @@
 "use client"
 import { InterviewPro } from "@/utils/schema"
 import React, { useEffect, useState } from "react"
+import Link from "next/link"
 import { eq } from "drizzle-orm"
 import { db } from "@/utils/db"
 import Webcam from "react-webcam"
@@ -78,9 +79,11 @@ const Interview = ({ params }) => {
 				</div>
 			</div>
 			<div className="flex justify-end items-end mt-5">
-				<Button className="bg-green-600 hover:bg-green-500">
-					Start Interview
-				</Button>
+				<Link href={`/dashboard/interview/${params.interviewId}/start`}>
+					<Button className="bg-green-600 hover:bg-green-500">
+						Start Interview
+					</Button>
+				</Link>
 			</div>
 		</div>
 	)
