@@ -27,6 +27,7 @@ const RecordAnswerSection = ({
 		results,
 		startSpeechToText,
 		stopSpeechToText,
+		setResults,
 	} = useSpeechToText({
 		continuous: true,
 		useLegacyResults: false,
@@ -90,8 +91,12 @@ const RecordAnswerSection = ({
 				title: "Successs",
 				description: "This has been recorded",
 			})
+
+			setUserAnswer("")
+			setResults([])
 		}
-		setUserAnswer("")
+		setResults([])
+
 		setLoading(false)
 	}
 
