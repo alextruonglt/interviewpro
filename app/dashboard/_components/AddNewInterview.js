@@ -18,7 +18,7 @@ import { InterviewPro } from "@/utils/schema"
 import { v4 as uuidv4 } from "uuid"
 import { useUser } from "@clerk/nextjs"
 import moment from "moment"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 
 const AddNewInterview = () => {
 	const [openDialog, setOpenDialog] = useState(false)
@@ -57,10 +57,9 @@ const AddNewInterview = () => {
 					createdAT: moment().format("DD-MM-yyyy"),
 				})
 				.returning({ mockId: InterviewPro.mockId })
-			console.log("Inserting Id:", response)
 			if (response) {
 				setOpenDialog(false)
-				router.push(`/dashboard/interview${response[0]}`)
+				router.push(`/dashboard/interview/${result[0]}`)
 			}
 		} else {
 			console.log("ERROR")

@@ -7,8 +7,10 @@ import { db } from "@/utils/db"
 import Webcam from "react-webcam"
 import { Lightbulb, WebcamIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useParams } from "next/navigation"
 
-const Interview = ({ params }) => {
+const Interview = () => {
+	const params = useParams()
 	const [interviewData, setInterviewData] = useState()
 	const [webCamEnabled, setWebCamEnabled] = useState(false)
 	useEffect(() => {
