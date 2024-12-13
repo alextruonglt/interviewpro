@@ -8,6 +8,14 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog"
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -25,6 +33,7 @@ const AddNewInterview = () => {
 	const [jobPosition, setJobPosition] = useState()
 	const [jobDesc, setJobDesc] = useState()
 	const [jobExp, setJobExp] = useState()
+	const [numOfQuestion, setNumOfQuestion] = useState("5")
 	const [loading, setLoading] = useState(false)
 	const [jsonResponse, setJsonResponse] = useState([])
 	const router = useRouter()
@@ -35,7 +44,7 @@ const AddNewInterview = () => {
 
 		console.log(jobPosition, jobDesc, jobExp)
 
-		const InputPrompt = `I need you to to come up with 5 interview questions based on ${jobPosition}. Here is the job description ${jobDesc}. The years of experince is ${jobExp}. Please give the response in JSON format. With question, then answer as text JSON`
+		const InputPrompt = `I need you to to come up with ${numOfQuestion} interview questions based on ${jobPosition}. Here is the job description ${jobDesc}. The years of experince is ${jobExp}. Please give the response in JSON format. With question, then answer as text JSON`
 		const result = await chatSession.sendMessage(InputPrompt)
 		const MockJsonResp = result.response
 			.text()
@@ -53,6 +62,7 @@ const AddNewInterview = () => {
 					jobPosition: jobPosition,
 					jobDesc: jobDesc,
 					jobExperience: jobExp,
+					numOfQuestions: numOfQuestion,
 					createdBy: user?.primaryEmailAddress?.emailAddress,
 					createdAT: moment().format("DD-MM-yyyy"),
 				})
@@ -68,6 +78,8 @@ const AddNewInterview = () => {
 		setLoading(false)
 	}
 
+	console.log(numOfQuestion)
+
 	return (
 		<div>
 			<div
@@ -82,7 +94,7 @@ const AddNewInterview = () => {
 				</h2>
 			</div>
 			<Dialog open={openDialog}>
-				<DialogContent className="max-w-2xl">
+				<DialogContent className="max-w-2xl [&>button]:hidden">
 					<DialogHeader>
 						<DialogTitle className="text-2xl">
 							Tell Us More About Your Interview
@@ -116,6 +128,23 @@ const AddNewInterview = () => {
 											min="0"
 											onChange={(e) => setJobExp(e.target.value)}
 										/>
+									</div>
+									<div className="my-3">
+										<label htmlFor="">Number of Questions</label>
+										{/* put input */}
+										<Select
+											onValueChange={(value) => setNumOfQuestion(value)}
+											defaultValue="5"
+										>
+											<SelectTrigger className="w-[180px]">
+												<SelectValue />
+											</SelectTrigger>
+											<SelectContent>
+												<SelectItem value="5">5</SelectItem>
+												<SelectItem value="10">10</SelectItem>
+												<SelectItem value="15">15</SelectItem>
+											</SelectContent>
+										</Select>
 									</div>
 								</div>
 								<div className="flex gap-5 justify-end">

@@ -1,8 +1,11 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import { ImageMinus } from "lucide-react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 export default function Home() {
+	const router = useRouter()
 	return (
 		<main className="flex flex-col hero_bg_color min-h-screen">
 			{/* Hero Section */}
@@ -15,7 +18,10 @@ export default function Home() {
 						Master your interview skills with tailored practice and expert
 						guidance.
 					</p>
-					<Button className="px-8 py-4 bg-blue-600 text-white text-lg font-bold rounded-lg hover:bg-blue-700">
+					<Button
+						onClick={() => router.push("/dashboard")}
+						className="px-8 py-4 bg-blue-600 text-white text-lg font-bold rounded-lg hover:bg-blue-700"
+					>
 						Create Free Account
 					</Button>
 				</div>
