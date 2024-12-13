@@ -22,9 +22,9 @@ const StartInterview = ({ params }) => {
 			.where(eq(InterviewPro.mockId, params.interviewId))
 
 		const jsonMockResp = JSON.parse(result[0]?.jsonMockResp)
-		console.log(jsonMockResp)
+
 		setMockInterviewQuestions(jsonMockResp)
-		setInterviewData[result[0]]
+		setInterviewData(result[0])
 	}
 	return (
 		<div>
@@ -35,7 +35,11 @@ const StartInterview = ({ params }) => {
 					activeQuestionIdx={activeQuestionIdx}
 				/>
 				{/* Video/Audio */}
-				<RecordAnswerSection />
+				<RecordAnswerSection
+					activeQuestionIdx={activeQuestionIdx}
+					mockInterviewQuestions={mockInterviewQuestions}
+					interviewData={interviewData}
+				/>
 			</div>
 		</div>
 	)
