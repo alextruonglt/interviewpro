@@ -77,3 +77,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+
+.hero_bg_color{
+  background-color: rgb(17,24,39);
+}
