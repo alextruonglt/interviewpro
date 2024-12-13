@@ -77,8 +77,8 @@ const RecordAnswerSection = ({
 		const jsonFeebackResponse = JSON.parse(mockJsonResp)
 		const response = await db.insert(UserAnswer).values({
 			mockIdRef: interviewData?.mockId,
-			question: currentQuestion,
-			correctAnswer: correctAnswer,
+			question: mockInterviewQuestions[activeQuestionIdx]?.question,
+			correctAnswer: mockInterviewQuestions[activeQuestionIdx]?.answer,
 			userAnswer: userAnswer,
 			feedback: jsonFeebackResponse?.feedback,
 			rating: jsonFeebackResponse?.rating,
@@ -108,6 +108,7 @@ const RecordAnswerSection = ({
 					width={200}
 					height={200}
 					className="absolute"
+					alt="webcam"
 				/>
 				<Webcam
 					mirrored={true}

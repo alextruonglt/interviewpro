@@ -7,12 +7,15 @@ import QuestionsSection from "./_components/QuestionsSection"
 import RecordAnswerSection from "./_components/RecordAnswerSection"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-const StartInterview = ({ params }) => {
+import { useParams } from "next/navigation"
+
+const StartInterview = () => {
+	const params = useParams()
+
 	const [interviewData, setInterviewData] = useState()
 	const [mockInterviewQuestions, setMockInterviewQuestions] = useState()
 	const [activeQuestionIdx, setActiveQuestionIdx] = useState(0)
 	useEffect(() => {
-		console.log(params.interviewId)
 		GetInterviewDetails()
 	}, [])
 

@@ -11,8 +11,11 @@ import {
 import { ChevronsUpDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
+import { useParams } from "next/navigation"
 
-const Feedback = ({ params }) => {
+const Feedback = () => {
+	const params = useParams()
+
 	const [feedbackList, setFeedbackList] = useState([])
 	const route = useRouter()
 
@@ -25,8 +28,21 @@ const Feedback = ({ params }) => {
 			.from(UserAnswer)
 			.where(eq(UserAnswer.mockIdRef, params.interviewId))
 			.orderBy(UserAnswer.id)
+		console.log(result)
 		setFeedbackList(result)
 	}
+
+	let total = 0
+	feedbackList.forEach((item) => {
+		if (item.rating == null) {
+			item.rating = 0
+		}
+		item.rating = Number(item.rating)
+		total += item.rating
+	})
+
+	let average = total / feedbackList.length
+	let roundedAverage = Math.round(average)
 
 	return (
 		<div className="p-10">
@@ -40,7 +56,7 @@ const Feedback = ({ params }) => {
 					<h2 className="font-bold text-2xl">
 						Here is your interview feedback
 					</h2>
-					<h2>Your overall interview rating: 7/10</h2>
+					<h2>Your overall interview rating: {roundedAverage}/100</h2>
 
 					<h2 className="text-sm text-gray-500">
 						Find Below interview Question, With A Sample Answer, And Feedback{" "}
