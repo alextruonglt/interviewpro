@@ -59,7 +59,7 @@ const AddNewInterview = () => {
 				.returning({ mockId: InterviewPro.mockId })
 			if (response) {
 				setOpenDialog(false)
-				router.push(`/dashboard/interview/${result[0]}`)
+				router.push(`/dashboard/interview/${response[0]?.mockId}`)
 			}
 		} else {
 			console.log("ERROR")
