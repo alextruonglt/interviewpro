@@ -14,6 +14,8 @@ const StartInterview = () => {
 
 	const [interviewData, setInterviewData] = useState()
 	const [mockInterviewQuestions, setMockInterviewQuestions] = useState()
+	const [loading, setLoading] = useState(false)
+
 	const [activeQuestionIdx, setActiveQuestionIdx] = useState(0)
 	useEffect(() => {
 		GetInterviewDetails()
@@ -31,6 +33,8 @@ const StartInterview = () => {
 		setMockInterviewQuestions(jsonMockResp)
 		setInterviewData(result[0])
 	}
+
+	console.log(`tacos ${interviewData}`)
 	return (
 		<div>
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -38,17 +42,21 @@ const StartInterview = () => {
 				<QuestionsSection
 					mockInterviewQuestions={mockInterviewQuestions}
 					activeQuestionIdx={activeQuestionIdx}
+					setActiveQuestionIdx={setActiveQuestionIdx}
 				/>
 				{/* Video/Audio */}
 				<RecordAnswerSection
 					activeQuestionIdx={activeQuestionIdx}
 					mockInterviewQuestions={mockInterviewQuestions}
 					interviewData={interviewData}
+					setLoading={setLoading}
+					loading={loading}
 				/>
 			</div>
 			<div className="flex justify-end gap-6">
 				{activeQuestionIdx > 0 && (
 					<Button
+						disabled={loading}
 						onClick={() => setActiveQuestionIdx((prevState) => prevState - 1)}
 					>
 						Previous Question
@@ -57,6 +65,7 @@ const StartInterview = () => {
 
 				{activeQuestionIdx != mockInterviewQuestions?.length - 1 && (
 					<Button
+						disabled={loading}
 						onClick={() => setActiveQuestionIdx((prevState) => prevState + 1)}
 					>
 						Next Question
@@ -65,7 +74,7 @@ const StartInterview = () => {
 
 				{activeQuestionIdx == mockInterviewQuestions?.length - 1 && (
 					<Link href={`/dashboard/interview/${interviewData?.mockId}/feedback`}>
-						<Button>End Interview</Button>
+						<Button disabled={loading}>End Interview</Button>
 					</Link>
 				)}
 			</div>

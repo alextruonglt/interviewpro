@@ -16,9 +16,10 @@ const RecordAnswerSection = ({
 	mockInterviewQuestions,
 	activeQuestionIdx,
 	interviewData,
+	setLoading,
+	loading,
 }) => {
 	const [userAnswer, setUserAnswer] = useState("")
-	const [loading, setLoading] = useState(false)
 	const { user } = useUser()
 	const {
 		error,
@@ -54,14 +55,14 @@ const RecordAnswerSection = ({
 	}
 
 	const updateUserAnswer = async () => {
-		console.log(userAnswer)
 		setLoading(true)
 
 		const currentQuestion = mockInterviewQuestions[activeQuestionIdx]?.question
 		const correctAnswer = mockInterviewQuestions[activeQuestionIdx]?.answer
 
 		const feebackPrompt = `Here's the job interview Question: ${currentQuestion}.
-			Here is the user submitted answer: ${userAnswer}. Based on both the question and
+			Here is the user submitted answer: ${userAnswer}. note that this is from voice to text, so there's some typos.
+			 Based on both the question and
 			answer in the context of a job interview.
 			Please rate it 0/100, and provide any feedback if neccasry. Do not exceen 3-5 sentences of feedback.
 			Give it back in JSON with 2 fields, rating and feedback fields
@@ -99,7 +100,7 @@ const RecordAnswerSection = ({
 
 		setLoading(false)
 	}
-
+	console.log(interviewData)
 	return (
 		<div className="flex items-center justify-center flex-col">
 			<div className="flex flex-col mt-20 justify-center items-center bg-slate-100 rounded-lg p-5">

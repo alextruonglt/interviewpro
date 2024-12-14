@@ -1,7 +1,11 @@
 import { Lightbulb, Volume2 } from "lucide-react"
 import React from "react"
 
-const QuestionsSection = ({ mockInterviewQuestions, activeQuestionIdx }) => {
+const QuestionsSection = ({
+	mockInterviewQuestions,
+	activeQuestionIdx,
+	setActiveQuestionIdx,
+}) => {
 	const textToSpeach = (text) => {
 		if ("speechSynthesis" in window) {
 			const speech = new SpeechSynthesisUtterance(text)
@@ -19,6 +23,7 @@ const QuestionsSection = ({ mockInterviewQuestions, activeQuestionIdx }) => {
 							return (
 								<h2
 									key={idx}
+									onClick={() => setActiveQuestionIdx(idx)}
 									className={`p-2  rounded-full
                                 text-xs md:text-sm text-center cursor-pointer  
                                 ${
