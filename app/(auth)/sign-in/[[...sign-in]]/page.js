@@ -37,7 +37,7 @@ export default function Page() {
 						</div>
 
 						{/* Add the afterSignInUrl prop */}
-						<SignIn />
+						<SignIn forceRedirectUrl="/dashboard" />
 					</div>
 				</main>
 			</div>

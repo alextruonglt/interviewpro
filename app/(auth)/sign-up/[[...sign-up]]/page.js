@@ -39,7 +39,7 @@ const SignUpPage = () => {
 						</div>
 
 						{/* Add the afterSignUpUrl prop */}
-						<SignUp afterSignUpUrl="/dashboard" />
+						<SignUp forceRedirectUrl="/dashboard" />
 					</div>
 				</main>
 			</div>
