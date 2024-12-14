@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation"
 import Hero from "@/components/Hero"
 import BeforeAfter from "@/components/BeforeAfter"
 import Pricing from "@/components/Pricing"
+import Header from "./dashboard/_components/Header"
+import Footer from "@/components/Footer"
+
 export default function Home() {
 	const router = useRouter()
 	return (
@@ -90,9 +93,12 @@ export default function Home() {
 		// 	</footer>
 		// </main>
 		<>
+			{" "}
+			<Header />
 			<Hero />
 			<BeforeAfter />
 			<Pricing />
+			<Footer />
 		</>
 	)
 }

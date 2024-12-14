@@ -21,7 +21,7 @@ const BeforeAfter = () => {
 								<p className="text-base font-semibold text-slate-700">Before</p>
 							</div>
 							<h3 className="font-display mt-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-								Traditional teaching methods that limit effectiveness
+								Traditional interview preparation methods that limit success
 							</h3>
 							<ul className="mt-6 space-y-3 text-base text-slate-600 sm:text-lg">
 								<li className="flex items-start gap-3">
@@ -39,8 +39,7 @@ const BeforeAfter = () => {
 											<line x1="6" y1="6" x2="18" y2="18"></line>
 										</svg>
 									</div>
-									One-size-fits-all approach fails to address individual student
-									needs
+									Generic advice fails to address individual weaknesses
 								</li>
 								<li className="flex items-start gap-3">
 									<div className="shrink-0 py-1.5">
@@ -57,8 +56,7 @@ const BeforeAfter = () => {
 											<line x1="6" y1="6" x2="18" y2="18"></line>
 										</svg>
 									</div>
-									Limited resources for personalized lesson planning and
-									materials
+									Limited tools for practicing real interview scenarios
 								</li>
 								<li className="flex items-start gap-3">
 									<div className="shrink-0 py-1.5">
@@ -75,7 +73,7 @@ const BeforeAfter = () => {
 											<line x1="6" y1="6" x2="18" y2="18"></line>
 										</svg>
 									</div>
-									Time-consuming grading and assessment processes
+									Time-intensive preparation with no clear feedback
 								</li>
 								<li className="flex items-start gap-3">
 									<div className="shrink-0 py-1.5">
@@ -92,8 +90,7 @@ const BeforeAfter = () => {
 											<line x1="6" y1="6" x2="18" y2="18"></line>
 										</svg>
 									</div>
-									Difficulty in tracking individual student progress and
-									identifying areas for improvement
+									Lack of tools to simulate interview pressure and dynamics
 								</li>
 							</ul>
 						</div>
@@ -113,7 +110,7 @@ const BeforeAfter = () => {
 								</svg>
 							</div>
 							<h3 className="font-display mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-								An AI-powered teaching assistant that enhances education
+								An AI-powered interview coach that boosts confidence
 							</h3>
 							<ul className="mt-6 space-y-3 text-base text-white sm:text-lg">
 								<li className="flex items-start gap-3">
@@ -128,8 +125,7 @@ const BeforeAfter = () => {
 											<path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"></path>
 										</svg>
 									</div>
-									Personalized learning experiences tailored to each
-									student&apos;s needs
+									Personalized feedback based on your performance
 								</li>
 								<li className="flex items-start gap-3">
 									<div className="shrink-0 py-1.5">
@@ -143,7 +139,7 @@ const BeforeAfter = () => {
 											<path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"></path>
 										</svg>
 									</div>
-									AI-generated lesson plans and teaching materials
+									AI-simulated mock interviews to mimic real scenarios
 								</li>
 								<li className="flex items-start gap-3">
 									<div className="shrink-0 py-1.5">
@@ -157,7 +153,7 @@ const BeforeAfter = () => {
 											<path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"></path>
 										</svg>
 									</div>
-									Automated grading and instant feedback for students
+									Automated grading and targeted improvement suggestions
 								</li>
 								<li className="flex items-start gap-3">
 									<div className="shrink-0 py-1.5">
@@ -171,8 +167,7 @@ const BeforeAfter = () => {
 											<path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"></path>
 										</svg>
 									</div>
-									Detailed progress tracking and data-driven insights for
-									targeted interventions
+									Detailed progress tracking and confidence building
 								</li>
 							</ul>
 						</div>

@@ -8,18 +8,18 @@ const Pricing = () => {
 				<div className="mb-20 flex w-full flex-col text-center">
 					<div className="mb-4">
 						<div className="mx-auto max-w-fit animate-pulse whitespace-nowrap rounded-full bg-blue-500 px-2 py-1 text-xs font-semibold text-white">
-							✨ Launch discount — $50 OFF ✨
+							✨ Launch discount — $10 ONLY ✨
 						</div>
 					</div>
 					<h2 className="mx-auto mb-8 max-w-xl text-3xl font-bold tracking-tight text-slate-800 lg:text-5xl">
-						Transform Your Lesson Planning with AI
+						Transform Your Interview Preparation with AI
 					</h2>
 					<div className="mx-auto max-w-md font-medium text-slate-500">
-						Save hours on lesson preparation, create engaging content, and focus
-						on what matters most - your students. Get started in minutes.
+						Get personalized interview feedback, practice with real-world
+						questions, and build your confidence. Start improving today.
 					</div>
 				</div>
-				<div className="relative flex flex-col items-stretch justify-center gap-8 lg:flex-row">
+				<div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
 					<PricingCard
 						key="Free Plan"
 						title="Free Plan"
@@ -27,68 +27,59 @@ const Pricing = () => {
 						price={0}
 						originalPrice={0}
 						features={[
-							<span key="feature1">50 AI-generated lesson plans</span>,
-							<span key="feature2">Basic customization options</span>,
-							<span key="feature3">Email support</span>,
+							<span key="feature1">3 AI-powered interviews per week</span>,
+							<span key="feature2">Basic question sets</span>,
+							<span key="feature3">Standard feedback</span>,
 						]}
 						buttonLink="/sign-up"
-						description="Perfect for trying out QuillMinds"
+						description="Perfect for trying out InterviewPro"
 					/>
 					<PricingCard
 						key="Pro Plan"
 						title="Pro Plan"
 						isFeatured={true}
-						price={19.99}
+						price={10}
 						originalPrice={30}
 						features={[
-							<span key="feature1">Unlimited AI-generated lesson plans</span>,
-							<span key="feature2">Advanced customization options</span>,
-							<span key="feature3">Priority support</span>,
-							<span key="feature4">Collaboration tools</span>,
-							<span key="feature5">Premium templates</span>,
+							<span key="feature1">300 AI-powered interviews</span>,
+							<span key="feature2">Access to premium question sets</span>,
+							<span key="feature3">Detailed performance feedback</span>,
+							<span key="feature4">Track your interview history</span>,
+							<span key="feature5">Targeted improvement suggestions</span>,
 						]}
 						buttonLink="/sign-up?priceId=pro-plan"
-						description="For educators who want the full QuillMinds experience"
+						description="For job seekers serious about interview success"
 					/>
 				</div>
-				{/* <TestimonialSingle
-					testimonial={{
-						name: "Sarah Johnson",
-						content:
-							"QuillMinds has revolutionized my lesson planning. I save hours each week and my students love the engaging content!",
-						schoolName: "Oakridge Elementary",
-						image: "https://api.dicebear.com/6.x/avataaars/svg?seed=Sarah",
-					}}
-				/> */}
 			</div>
 		</section>
 	)
-}
 
-function PricingCard({
-	title,
-	isFeatured,
-	price,
-	originalPrice,
-	features,
-	buttonLink,
-	description,
-}) {
-	return (
-		<div className={`relative w-full max-w-lg ${isFeatured ? "lg:-mt-4" : ""}`}>
-			{isFeatured && (
-				<div className="absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2">
-					<span className="whitespace-nowrap rounded-full bg-blue-500 px-2 py-1 text-xs font-semibold text-white">
-						BEST TEACHER&apos;S CHOICE
-					</span>
-				</div>
-			)}
+	function PricingCard({
+		title,
+		isFeatured,
+		price,
+		originalPrice,
+		features,
+		buttonLink,
+		description,
+	}) {
+		return (
 			<div
-				className={`relative z-10 h-full rounded-lg ${
-					isFeatured ? "ring-2 ring-blue-500" : "border border-zinc-200"
+				className={`relative w-full rounded-lg shadow-lg ${
+					isFeatured
+						? "lg:-mt-4 ring-2 ring-blue-500"
+						: "border border-zinc-200"
 				}`}
 			>
-				<div className="flex h-full flex-col gap-5 rounded-lg bg-white p-8 lg:gap-8">
+				{isFeatured && (
+					<div className="absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2">
+						<span className="whitespace-nowrap rounded-full bg-blue-500 px-2 py-1 text-xs font-semibold text-white">
+							BEST VALUE
+						</span>
+					</div>
+				)}
+				<div className="flex h-full flex-col gap-5 rounded-lg bg-white p-8">
 					<div>
 						<h3 className="mb-2 text-xl font-bold text-slate-800">{title}</h3>
 						<p className="text-sm text-slate-600">{description}</p>
@@ -109,15 +100,11 @@ function PricingCard({
 						</p>
 						<div className="mb-[4px] flex flex-col justify-end">
 							<p className="text-xs font-semibold uppercase text-slate-500">
-								USD / month
+								USD / one-time
 							</p>
 						</div>
 					</div>
-					<ul
-						className={`flex-1 space-y-2.5 text-base leading-relaxed ${
-							isFeatured ? "text-green-600" : "text-slate-700"
-						}`}
-					>
+					<ul className="flex-1 space-y-2.5 text-base leading-relaxed text-slate-700">
 						{features.map((feature, index) => (
 							<li key={index} className="flex items-center gap-2">
 								<svg
@@ -132,19 +119,19 @@ function PricingCard({
 										clipRule="evenodd"
 									/>
 								</svg>
-								<span className="text-slate-700">{feature}</span>
+								<span>{feature}</span>
 							</li>
 						))}
 					</ul>
 					<div className="space-y-2">
 						<Button href={buttonLink} color="blue" className="w-full">
-							Get Quillminds
+							Get InterviewPro
 						</Button>
 					</div>
 				</div>
 			</div>
-		</div>
-	)
+		)
+	}
 }
 
 export default Pricing
