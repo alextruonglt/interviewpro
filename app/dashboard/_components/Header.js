@@ -16,7 +16,7 @@ const Header = () => {
 			{/* Logo and Title */}
 			<div
 				className="flex items-center gap-3 cursor-pointer flex-shrink-0"
-				onClick={() => router.push("/")}
+				onClick={() => router.push("/dashboard")}
 			>
 				<Image src={"/logo.svg"} width={50} height={50} alt="logo" />
 				<h1 className="text-lg font-extrabold text-slate-800">InterviewPro</h1>

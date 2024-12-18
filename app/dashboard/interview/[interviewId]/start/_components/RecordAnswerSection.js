@@ -40,11 +40,16 @@ const RecordAnswerSection = ({
 			setUserAnswer((prevAnswer) => prevAnswer + result?.transcript)
 		})
 	}, [results])
+
 	useEffect(() => {
-		if (!isRecording && userAnswer.length > 10) {
-			updateUserAnswer()
-		}
-	}, [userAnswer])
+		const timeoutId = setTimeout(() => {
+			if (!isRecording && userAnswer.length > 10) {
+				updateUserAnswer()
+			}
+		}, 500)
+
+		return () => clearTimeout(timeoutId)
+	}, [userAnswer, isRecording])
 
 	const startStopRecording = () => {
 		if (isRecording) {

@@ -38,6 +38,7 @@ const AddNewInterview = () => {
 	const [jsonResponse, setJsonResponse] = useState([])
 	const router = useRouter()
 	const { user } = useUser()
+
 	const onSubmit = async (e) => {
 		e.preventDefault()
 		setLoading(true)
@@ -140,6 +141,8 @@ const AddNewInterview = () => {
 												<SelectValue />
 											</SelectTrigger>
 											<SelectContent>
+												<SelectItem value="1">1</SelectItem>
+
 												<SelectItem value="5">5</SelectItem>
 												<SelectItem value="10">10</SelectItem>
 												<SelectItem value="15">15</SelectItem>

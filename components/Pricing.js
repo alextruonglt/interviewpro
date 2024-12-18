@@ -1,7 +1,13 @@
+"use client"
 import React from "react"
 import { Button } from "./ui/button"
+import { useRouter } from "next/navigation"
 
 const Pricing = () => {
+	const router = useRouter()
+	const dashboardClick = () => {
+		router.push("/dashboard")
+	}
 	return (
 		<section className="overflow-hidden bg-slate-50" id="pricing">
 			<div className="mx-auto max-w-5xl px-8 py-24">
@@ -22,6 +28,7 @@ const Pricing = () => {
 				<div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
 					<PricingCard
 						key="Free Plan"
+						dashboardClick={dashboardClick}
 						title="Free Plan"
 						isFeatured={false}
 						price={0}
@@ -35,6 +42,7 @@ const Pricing = () => {
 						description="Perfect for trying out InterviewPro"
 					/>
 					<PricingCard
+						dashboardClick={dashboardClick}
 						key="Pro Plan"
 						title="Pro Plan"
 						isFeatured={true}
@@ -63,6 +71,7 @@ const Pricing = () => {
 		features,
 		buttonLink,
 		description,
+		dashboardClick,
 	}) {
 		return (
 			<div
@@ -124,7 +133,7 @@ const Pricing = () => {
 						))}
 					</ul>
 					<div className="space-y-2">
-						<Button href={buttonLink} color="blue" className="w-full">
+						<Button onClick={dashboardClick} color="blue" className="w-full">
 							Get InterviewPro
 						</Button>
 					</div>

@@ -1,6 +1,10 @@
+"use client"
 import React from "react"
 import { Button } from "./ui/button"
+import { useRouter } from "next/navigation"
 const Hero = () => {
+	const router = useRouter()
+
 	return (
 		<div>
 			<div className="mx-auto flex max-w-5xl flex-col items-center justify-center px-8 py-12 pt-4 lg:px-12 lg:py-24">
@@ -20,6 +24,7 @@ const Hero = () => {
 								color="blue"
 								href={"/sign-up"}
 								className="h-12 w-64 rounded-md"
+								onClick={() => router.push("/dashboard")}
 							>
 								Get Started
 							</Button>
