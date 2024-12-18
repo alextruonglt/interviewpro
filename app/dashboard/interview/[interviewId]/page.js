@@ -54,7 +54,7 @@ const Interview = () => {
 						</h2>
 						<h2 className="pt-4">
 							Please enable your Web Camera and microphone to begin. You will be
-							prompted with 5 questions and get a report after. Please note we
+							prompted with questions and get a report after. Please note we
 							don't store your video.{" "}
 						</h2>
 					</div>

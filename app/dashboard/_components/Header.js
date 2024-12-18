@@ -33,14 +33,7 @@ const Header = () => {
 					>
 						Dashboard
 					</li>
-					<li
-						className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${
-							path == "/questions" && "text-primary font-bold"
-						}`}
-						onClick={() => router.push("/questions")}
-					>
-						Questions
-					</li>
+
 					<li
 						className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${
 							path == "/upgrade" && "text-primary font-bold"
@@ -51,11 +44,11 @@ const Header = () => {
 					</li>
 					<li
 						className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${
-							path == "/howitworks" && "text-primary font-bold"
+							path == "/contact" && "text-primary font-bold"
 						}`}
-						onClick={() => router.push("/howitworks")}
+						onClick={() => router.push("/upgrade")}
 					>
-						How It Works
+						Contact
 					</li>
 				</ul>
 			) : (

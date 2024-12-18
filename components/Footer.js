@@ -32,12 +32,10 @@ const Footer = () => {
 						href="mailto:contact@interviewpro.com"
 						className="hover:text-slate-900"
 					>
-						Support
+						Contact
 					</a>
-					<Link href="/tos" className="hover:text-slate-900">
-						Terms of Service
-					</Link>
-					<Link href="/privacy-policy" className="hover:text-slate-900">
+
+					<Link href="/privacy" className="hover:text-slate-900">
 						Privacy Policy
 					</Link>
 				</div>

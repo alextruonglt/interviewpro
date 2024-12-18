@@ -99,7 +99,9 @@ const Feedback = () => {
 				</>
 			)}
 
-			<Button onClick={() => route.replace("/dashboard")}>Go Home</Button>
+			<Button className="mt-2" onClick={() => route.replace("/dashboard")}>
+				Go Home
+			</Button>
 		</div>
 	)
 }

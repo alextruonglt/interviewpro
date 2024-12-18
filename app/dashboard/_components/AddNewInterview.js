@@ -134,7 +134,7 @@ const AddNewInterview = () => {
 										<label htmlFor="">Number of Questions</label>
 										{/* put input */}
 										<Select
-											onValueChange={(value) => setNumOfQuestion(value)}
+											onValueChange={(value) => setNumOfQuestion(Number(value))}
 											defaultValue="5"
 										>
 											<SelectTrigger className="w-[180px]">

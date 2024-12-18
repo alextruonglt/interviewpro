@@ -1,10 +1,12 @@
 "use client"
 import React from "react"
 import { Button } from "./ui/button"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 const Pricing = () => {
 	const router = useRouter()
+	const path = usePathname()
+
 	const dashboardClick = () => {
 		router.push("/dashboard")
 	}
@@ -133,9 +135,22 @@ const Pricing = () => {
 						))}
 					</ul>
 					<div className="space-y-2">
-						<Button onClick={dashboardClick} color="blue" className="w-full">
-							Get InterviewPro
-						</Button>
+						{path == "/upgrade" ? (
+							<Button color="blue" className="w-full">
+								<a
+									href="https://buy.stripe.com/cN2dRo1do9YecQo9AC"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="w-full block text-center"
+								>
+									Get InterviewPro
+								</a>
+							</Button>
+						) : (
+							<Button onClick={dashboardClick} color="blue" className="w-full">
+								Get InterviewPro
+							</Button>
+						)}
 					</div>
 				</div>
 			</div>
