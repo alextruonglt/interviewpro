@@ -25,13 +25,10 @@ const Footer = () => {
 					</Link>
 				</div>
 				<div className="flex items-center gap-8 text-lg font-medium text-slate-700">
-					<Link href="/#pricing" className="hover:text-slate-900">
+					<Link href="/upgrade" className="hover:text-slate-900">
 						Pricing
 					</Link>
-					<a
-						href="mailto:contact@interviewpro.com"
-						className="hover:text-slate-900"
-					>
+					<a href="/contact" className="hover:text-slate-900">
 						Contact
 					</a>
 
