@@ -46,7 +46,7 @@ const Header = () => {
 						className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${
 							path == "/contact" && "text-primary font-bold"
 						}`}
-						onClick={() => router.push("/upgrade")}
+						onClick={() => router.push("/contact")}
 					>
 						Contact
 					</li>
